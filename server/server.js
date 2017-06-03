@@ -6,11 +6,15 @@ import {
 } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 
+import cors from 'cors';
+
 import { schema, mockSchema } from './src/schema';
 
 const PORT = 4000;
 
 const server = express();
+
+server.use('*', cors({ origin: 'http://localhost:3000' }));
 
 server.get('/', function(req, res) {
     res.send('Hellow World!');
